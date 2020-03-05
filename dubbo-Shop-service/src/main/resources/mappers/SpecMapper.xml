@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qhm.dao.SpecDao">
-
    	<!-- List<Spec> list(String name); -->
    	<resultMap type="spec" id="specMaper">
    		<id property="id" column="id"></id>
@@ -36,7 +35,7 @@
 	</insert>
 	
 
-		<!-- int updateSpec(Spec spec); -->
+	<!-- int updateSpec(Spec spec); -->
 	<update id="updateSpec">
 		update hg_spec set spec_name=#{specName}
 		where id=#{id}
@@ -73,8 +72,6 @@
 	</delete>
     
     
-
-	<!-- int deleteSpecBatch(int[] ids); -->
 
 	<!-- int deleteSpecBatch(int[] ids); -->
    	

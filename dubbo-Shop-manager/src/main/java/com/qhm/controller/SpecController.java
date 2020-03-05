@@ -1,7 +1,5 @@
 package com.qhm.controller;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.dubbo.config.annotation.Reference;
@@ -10,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.qhm.pojo.Spec;
 import com.qhm.service.SpecService;
-import com.github.pagehelper.PageInfo;
 
 /**
  * 
@@ -37,8 +35,9 @@ public class SpecController {
 			@RequestParam(defaultValue="") String name
 	) {
 		 PageInfo<Spec> pageInfo = specService.list(name, page);
+		//pageInfo.getPages()
 		 request.setAttribute("pageInfo", pageInfo);
-		 request.setAttribute("name", name);
+		 request.setAttribute("queryName", name);
 		return "spec/list";
 	}
 	
@@ -51,17 +50,15 @@ public class SpecController {
 	 */
 	@RequestMapping("add")
 	@ResponseBody
-	public String add(HttpServletRequest request,Spec spec 
-	) {
+	public String add(HttpServletRequest request,Spec spec) {
 		//System.out.println("spec" + spec);
 		//System.out.println();
 		spec.getOptions().removeIf(x->{return x.getOptionName()==null;});
-		System.err.println("spec 处理后：" + spec);
+		//System.out.println("spec 处理后：" + spec);
 		//调用服务
 		int add = specService.add(spec);
-		return add>0?"success?data='成功'":"false" ;
+		return add>0?"success":"false";
 	}
-	
 	
 	@RequestMapping("update")
 	@ResponseBody
@@ -75,6 +72,9 @@ public class SpecController {
 		return result >0 ?"success":"false";
 		//return "fail";
 	}
+	
+	
+	
 	/**
 	 * 用于修改数据时候的回显
 	 * @param request
@@ -87,6 +87,8 @@ public class SpecController {
 		return specService.findById(id);
 		
 	}
+	
+	
 	/**
 	 * 删除规格
 	 * @param request
@@ -118,19 +120,4 @@ public class SpecController {
 		int delNum = specService.deleteBatch(ids);
 		return delNum>0?"success":"false";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

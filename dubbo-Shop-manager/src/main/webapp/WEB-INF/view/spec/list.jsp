@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-
-
 <div>
 	<input id="queryName" value="${queryName}"/>
 	<button type="button" class="btn btn-primary" onclick="query()">
@@ -19,16 +17,13 @@
    	
 </div>
 
-
-
-<!-- Modal 模态框-->
+<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">添加规格</h5>&nbsp;&nbsp;&nbsp;
-         <button type="button" onclick="addProp()" class="btn btn-primary"> 添加属性
-         </button>
+        <h5 class="modal-title" id="staticBackdropLabel">添加规格</h5>
+         <button type="button" onclick="addProp('#addspec')"> 添加属性</button>
          
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -37,13 +32,12 @@
       </div>
       <div class="modal-body">
         	<form id="addspec">
-        	<input type="hidden" name="id" id="upId">
         		 <div class="form-group">
     				<label for="specName">规格名称</label>
     				<input type="text" class="form-control" name="specName" id="specName" aria-describedby="specNamelHelp">
     				<small id="specNamelHelp" class="form-text text-muted">请输入规格名称</small>
   				</div>
-  				<div class="form-group">
+  				<div class="form-group form-group-proper">
     				<label for="inputAddress">属性值</label>
     				<input type="text" name="options[0].optionName" class="form-control" id="inputAddress" placeholder="1234 Main St">
     				<button onclick="$(this).parent().remove()">删除</buttonn>
@@ -60,7 +54,7 @@
   </div>
 </div>
 
-<!-- 修改的模态框 -->
+
 <!-- Modal -->
 <div class="modal fade" id="staticBackdropUpdate" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -99,21 +93,22 @@
   </div>
 </div>
 
+
 <table class="table">
 	
 	<tr> 
 		<th>id <input type="checkbox" id="allSel" onchange="selectedAll()">  
-			<button type="button" class="btn btn-info btn-sm" onclick="selAll(1)">全选</button>
-			<button type="button" class="btn btn-info btn-sm" onclick="selAll(2)">全不选</button>
-			<button type="button" class="btn btn-info btn-sm" onclick="selAll(3)">反选</button>
+		<button type="button" class="btn btn-info btn-sm" onclick="selAll(1)">全选</button>
+		<button type="button" class="btn btn-info btn-sm" onclick="selAll(2)">全不选</button>
+		<button type="button" class="btn btn-info btn-sm" onclick="selAll(3)">反选</button>
+		 </th>
 		<th>名称</th>
 		<th>详情</th>
 		<th>操作</th>
 	</tr>
 	<c:forEach items="${pageInfo.list}" var="spec">
 		<tr>
-		<td><input type="checkbox" name="ids" value="${spec.id}" onchange="selectedOne()"> ${spec.id}</td>
-
+			<td><input type="checkbox" name="ids" value="${spec.id}" onchange="selectedOne()"> ${spec.id}</td>
 			<td>${spec.specName}</td>
 			<td>
 				<c:forEach items="${spec.options}" var="op" >
@@ -128,10 +123,8 @@
 		</tr>
 	</c:forEach>
 	
-	
-	
 	<!-- pageInfo -->
-		<tr>
+	<tr>
 		<td colspan="3">
 			<jsp:include page="../common/page.jsp"></jsp:include>
 		</td>
@@ -139,16 +132,16 @@
 </table>    
 
 <script type="text/javascript">
-
-
-
 	var addindex=1;
-	function addProp(){
-		$("#addspec").append('<div class="form-group">'+
+	//fomId 标志给那个form 添加属性
+	function addProp(fomId){
+			$(fomId).append('<div class="form-group form-group-proper">'+
     				'<label for="inputAddress">属性值</label>'+
     				'<input type="text" name="options['+addindex+'].optionName" class="form-control" id="inputAddress" placeholder="1234 Main St">'+
     				'<button onclick="$(this).parent().remove()">删除</button>'+
     				'</div>')
+    				
+    				
     	addindex++;
 	} 
 	
@@ -169,7 +162,7 @@
 			  // 成功后的回调函数
 			  success:function(data){
 				 if(data=="success"){
-					 alert("数据提交成功");
+					 alert("数据提交成功")
 					 $('#staticBackdropUpdate').modal('hide')
 				 }else{
 					 alert("数据保存失败")
@@ -400,11 +393,6 @@
 	
 	
 	
-	
-	
-	
-	
-	
 	/**
 	  提交数据	
 	*/
@@ -412,7 +400,7 @@
 		//addspec
 		var formData = new FormData($("#addspec")[0]);
 		$.ajax({url:"/spec/add",
-			  dataType:"json",
+			 // dataType:"json",
 			  data:formData,
 			  // 让jQuery 不要再提交数据之前进行处理
 			  processData : false,
@@ -422,8 +410,7 @@
 			  type:"post",
 			  // 成功后的回调函数
 			  success:function(data){
-				 
-			  if(data=="success"){
+				 if(data=="success"){
 					 alert("数据提交成功")
 					 $('#staticBackdrop').modal('hide')
 				 }else{
