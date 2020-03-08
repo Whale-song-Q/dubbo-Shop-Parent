@@ -2,28 +2,30 @@ package com.qhm.service;
 
 import java.util.List;
 
-import com.github.pagehelper.PageInfo;
 import com.qhm.pojo.Brand;
 import com.qhm.pojo.Category;
+import com.github.pagehelper.PageInfo;
+
 /**
  * 
- * 
+ * @author qhm
  *  
  *  **** Dubbo 服务接口函数比要有非Void 的返回值********
- *  
+ *   
  */
-public interface GoodService {
+public interface GoodsService { 
 	
 	int addBrand(Brand brand);
+	Brand toUpdate(String id);
 	int updateBrand(Brand brand);
-	int deleteBrand(Integer id);
+	int deleteBrand(int[] id);
 	/**
 	 * 
 	 * @param firstChar 首字母
 	 * @param page 页码
 	 * @return
 	 */
-	PageInfo<Brand> listBrand( String firstChar,int page); 
+	PageInfo<Brand> listBrand( Brand mohu,int page); 
 	
 	
 	int addCategory(Category category);
@@ -43,5 +45,5 @@ public interface GoodService {
 	List<Category> treeCategory(); 
 	
 	
-	
+
 }

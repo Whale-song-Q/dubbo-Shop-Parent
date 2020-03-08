@@ -15,6 +15,15 @@ public class Brand implements Serializable{
 	private String name        ;
 	private String firstChar  ;
 	private int deletedFlag;
+	private String mohu;
+	
+	
+	public String getMohu() {
+		return mohu;
+	}
+	public void setMohu(String mohu) {
+		this.mohu = mohu;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -68,6 +77,11 @@ public class Brand implements Serializable{
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Brand [id=" + id + ", name=" + name + ", firstChar=" + firstChar + ", deletedFlag=" + deletedFlag
+				+ ", mohu=" + mohu + "]";
 	}
                                 ;
                                 
