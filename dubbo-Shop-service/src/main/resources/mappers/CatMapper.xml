@@ -21,6 +21,11 @@ path
 	select * from hg_category where parent_id=0
 </select>
 
+<select id="findById" resultType="Category">
+	select c.id id,c.parent_id parentId,c.name name,c.path path from hg_category c where c.parent_id=#{value}
+</select>
+
+
 <insert id="add" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 	insert into hg_category(parent_id,name) value(#{parentId},#{name})
 </insert>

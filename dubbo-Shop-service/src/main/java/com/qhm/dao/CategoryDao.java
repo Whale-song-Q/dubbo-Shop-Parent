@@ -28,4 +28,8 @@ public interface CategoryDao {
 	 * @return
 	 */
 	int update(Category category);
+	
+	
+	Category findById(Integer id);	
+	
 }

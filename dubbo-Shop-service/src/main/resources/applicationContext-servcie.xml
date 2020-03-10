@@ -55,7 +55,7 @@
 	<dubbo:application name="hgshop-goods-service" />
 	<!-- 注册中心 采用zookeeper -->
 	<dubbo:registry
-		address="zookeeper://127.0.0.1:2181" /> 
+		address="zookeeper://192.168.2.142:2181" /> 
 	<!-- 直连 -->
 	<!-- <dubbo:registry address="N/A" /> -->
 	<!-- 通讯协议 -->

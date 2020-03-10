@@ -1,6 +1,9 @@
 package com.qhm.service;
 
 import com.qhm.pojo.Spec;
+
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 
 /**
@@ -32,6 +35,8 @@ public interface SpecService {
 	 * @return
 	 */
 	int deleteBatch(int[] id);
+
+	List<Spec> listAll();
 	
 	
 	

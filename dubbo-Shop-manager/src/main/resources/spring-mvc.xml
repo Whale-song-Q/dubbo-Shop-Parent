@@ -31,8 +31,9 @@
 	<!-- 应用程序名称 -->
 	<dubbo:application name="hgshop-manage" />
 	<!-- 注册中心 -->
+	<!-- address="zookeeper://192.168.140.1:2181" /> -->
 	<dubbo:registry
-		address="zookeeper://127.0.0.1:2181" />
+		address="zookeeper://192.168.2.142:2181" />
 	<!-- 配置扫描包的路径 -->	
 	<dubbo:annotation package="com.qhm.controller"/>
 </beans>

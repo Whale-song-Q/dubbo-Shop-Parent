@@ -86,7 +86,7 @@ public class BrandCtroller {
 	 */
 	@RequestMapping("toUpdatebrand")
 	@ResponseBody
-	public Brand toUpdatebrand(String id,HttpServletRequest request) {
+	public Brand toUpdatebrand(Integer id,HttpServletRequest request) {
 		System.out.println("要修改的brand的id="+id);
 		Brand update = goodsService.toUpdate(id);
 		System.err.println("查询出来的对象信息"+update);

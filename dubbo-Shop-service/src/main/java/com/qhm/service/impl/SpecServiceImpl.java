@@ -99,6 +99,12 @@ public class SpecServiceImpl implements SpecService{
 		specDao.deleteSpecBatch(ids);
 		return 1;
 	}
+
+	@Override
+	public List<Spec> listAll() {
+		// TODO Auto-generated method stub
+		return specDao.listAll();
+	}
 	
 
 }

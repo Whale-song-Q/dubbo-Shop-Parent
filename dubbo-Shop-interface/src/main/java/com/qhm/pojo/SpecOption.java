@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 规格选项实体 
- * @author qhm
+ * @author zhuzg
  *
  */
 public class SpecOption implements Serializable {
@@ -18,7 +18,18 @@ public class SpecOption implements Serializable {
 	private int specId;
 	private int orders=0;
 	
+	/**
+	 * 属性名称
+	 */
+	private String specName;
 	
+	
+	public String getSpecName() {
+		return specName;
+	}
+	public void setSpecName(String specName) {
+		this.specName = specName;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -45,7 +56,7 @@ public class SpecOption implements Serializable {
 	@Override
 	public String toString() {
 		return "SpecOption [id=" + id + ", optionName=" + optionName + ", specId=" + specId + ", orders=" + orders
-				+ "]";
+				+ ", specName=" + specName + "]";
 	}
 	public Integer getId() {
 		return id;
