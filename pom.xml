@@ -8,6 +8,9 @@
   	<module>dubbo-Shop-interface</module>
   	<module>dubbo-Shop-service</module>
   	<module>dubbo-Shop-manager</module>
+  	<module>hg_user-interface</module>
+  	<module>hg_user-service</module>
+  	<module>hg_user-web</module>
   </modules>
    <!-- 定义主要版本号 -->
 	<properties>

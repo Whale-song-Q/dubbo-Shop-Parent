@@ -64,6 +64,7 @@ public interface GoodsService {
 		int updateSku(Sku sku);
 		int deleteSku(int id);
 		int deleteSkuBatch(int[] id);
+		List<Sku> listSkuBySpu(int spuId);
 
 
 

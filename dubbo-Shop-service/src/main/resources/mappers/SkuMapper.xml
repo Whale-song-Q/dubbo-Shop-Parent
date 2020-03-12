@@ -56,4 +56,9 @@
 <!-- 	//添加对应sku的属性值
 	int addSkuSpec(SpecOption so); -->
 	
+		<!-- 获取sku -->
+	<select id="listBySpu" resultMap="skuMapper">
+		SELECT *, id as detailId FROM hg_sku WHERE spu_id=${value} ORDER BY id DESC
+	</select>
+	
 </mapper>

@@ -197,4 +197,9 @@ public class GoodsServiceImpl  implements GoodsService{
 			return spuDao.findById(id);
 		}
 
+		@Override
+		public List<Sku> listSkuBySpu(int spuId) {
+			// TODO Auto-generated method stub
+			return skuDao.listBySpu(spuId);
+		}
 }
