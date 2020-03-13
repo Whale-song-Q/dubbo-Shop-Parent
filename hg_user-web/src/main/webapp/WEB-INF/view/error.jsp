@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>错误页面</title>
 </head>
 <body>
-个人中心
+	<div> 错误信息：${error}</div>
 </body>
 </html>

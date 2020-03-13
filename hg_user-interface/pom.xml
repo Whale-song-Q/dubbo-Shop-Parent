@@ -6,4 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>hg_user-interface</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.quahiming.shop</groupId>
+  		<artifactId>dubbo-Shop-interface</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

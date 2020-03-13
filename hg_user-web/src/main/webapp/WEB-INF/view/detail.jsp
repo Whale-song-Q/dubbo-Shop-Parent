@@ -70,18 +70,59 @@
 		</div>
 		<div>
 			<div>${spu.goodsName} </div>
-			<div><font color="red" size="18">${spu.caption}</font> </div>
+			<div style="width: 350;height: 400">
+				<font color="red" >${spu.caption}</font> 
+			
+			</div>
 			<!-- 以下显示sku -->
 			<div>
+				<c:forEach items="${skus}" var="sku">
+					
+					<div style="border:1px solid rgb(255,0,0); margin:4px" onclick="selSku(${sku.id},${sku.price})" >
+						<c:forEach items="${sku.specs}" var="spec">
+							&nbsp;${spec.specName}:${spec.optionName} 
+						</c:forEach>
+					</div>
+				</c:forEach>
+			</div>
+				<!-- 显示sku 的买点等等 -->
+			<div id="skuDetail">
 				
 			</div>
 			<!-- 加入购物车 -->
 			<div>
-				
+				购买数量：<input type="number" id="buyNum">
+				<button type="button" class="btn btn-danger btn-lg" onclick="addCart()">加入购物车</button>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+
+	var buySkuId=0;
+
+	function addCart(){
+		
+		$.post("/user/addCart",
+				{skuId:buySkuId,
+				 buyNum:$("#buyNum").val()
+				 },
+				function(msg){
+					if(msg=="success"){
+						alert("购买成功");
+					}else{
+						alert(msg)
+					}
+		});
+	}
+
+	
+	function selSku(id,price){
+		$("#skuDetail").html("价格：" + price)
+		buySkuId=id
+	}
+		
+</script>
 
 </body>
 </html>

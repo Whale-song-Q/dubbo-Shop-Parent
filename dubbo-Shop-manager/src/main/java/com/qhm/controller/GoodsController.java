@@ -185,9 +185,18 @@ public class GoodsController {
 	
 	@RequestMapping("addSku")
 	@ResponseBody
-	public String addSku(HttpServletRequest request ,Sku sku,int[] specIds,@RequestParam(value="specOptionIds") int[] specOptionIds) {
+	public String addSku(HttpServletRequest request ,
+			Sku sku,int[] specIds,
+			@RequestParam(value="specOptionIds") int[] specOptionIds,
+			@RequestParam("thumbnail") MultipartFile thumbnail,
+			@RequestParam("imageFile") MultipartFile image
+			) throws IllegalStateException, IOException {
 		// 保存给sku的所有的属性以及属性值
 		List<SpecOption> specs = new ArrayList<>();
+		
+		//处理图片
+		sku.setCartThumbnail( this.processFile(thumbnail));
+		sku.setImage(processFile(image));
 		
 		System.out.println("specIds + " + specIds.length + " and specOptionIds is " + specOptionIds.length);
 		

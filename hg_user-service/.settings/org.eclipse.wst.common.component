@@ -7,6 +7,9 @@
         <dependent-module archiveName="hg_user-interface-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hg_user-interface/hg_user-interface">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="dubbo-Shop-interface-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-Shop-interface/dubbo-Shop-interface">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="hg_user-service"/>
         <property name="java-output-path" value="/hg_user-service/target/classes"/>
     </wb-module>

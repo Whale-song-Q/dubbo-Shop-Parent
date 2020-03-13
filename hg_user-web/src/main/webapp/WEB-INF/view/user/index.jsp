@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html>
+    pageEncoding="UTF-8"%><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -10,13 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>豪哥商城系统</title>
+    <title>个人中心</title>
 
     <!-- Bootstrap core CSS -->
-    <script type="text/javascript" src="/resource/jquery/jquery-3.4.1.js"></script>
 	<link href="/resource/bootstrap4/css/bootstrap.css" rel="stylesheet" >
-	<link href="/resource/css/bootstrap.css" rel="stylesheet" >    
-	
+
 
 
     <!-- Favicons -->
@@ -28,11 +24,6 @@
 <link rel="icon" href="https://v4.bootcss.com/docs/assets/img/favicons/favicon.ico">
 <script type="text/javascript" src="/resource/jquery/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resource/bootstrap4/js/bootstrap.js"></script>
-
-<link href="/resource/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet" >    
-	<script src="/resource/bootstrap-treeview/js/bootstrap-treeview.js"></script>    
-	
-
 
 <meta name="msapplication-config" content="/docs/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#563d7c">
@@ -61,14 +52,8 @@
 	@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">请输入商品名称</a>
-  	<div>
-  		<form action="search">
-  			<input class="form-control form-control-dark w-100" name="key" type="text" placeholder="商品关键字" aria-label="Search">
-  			<button type="submit" class="btn btn-danger" >搜索</button>
-  		</form>
-	 </div>
-	 
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="#">Sign out</a>
@@ -76,53 +61,42 @@
   </ul>
 </nav>
 
-<div class="container-fluid" style="margin-top:80px">
-	<div class=row>
-		<div class="col-md-3" id="addCategoryTree">
-			
-		</div>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item" >
+            <a class="nav-link active" href="#" data-toggle="/user/cartlist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              		购物车 <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item"  >
+            <a class="nav-link" href="#" data-toggle="/user/orderlist">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+              		完成订单
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+
+    	<main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 		
-		<!-- 放商品 -->
-		<div class="col-md-9">
-			<div class="row">
-				<c:forEach items="${pageInfo.list}"  var="spu">
-					<div class="col-md-3" style="border:1px ; margin-bottom:18px">
-						<div>
-							<a href="/detail?spuId=${spu.id}"><img width="200px" height="200px" alt="" src="/pic/${spu.smallPic}"></a>
-						</div>
-						<div>${spu.goodsName}</div>
-						<div>${spu.caption}</div>
-					</div>
-				</c:forEach>
-				
-			</div>	
-		</div>
-	</div>
+    </main>
+  </div>
 </div>
+
 <script type="text/javascript">
-function initTree() {
-	//发送ajax获取树需要的数据
-	
-	$.post("/treeData", {},
-			function(treeData) {
-				//初始化添加的时候分类的树
-				$("#addCategoryTree").treeview({
-					data : treeData,
-					levels : 2,
-					onNodeSelected : function(event, node) {
-						 if (node.nodes.length==0) {
-							$("#category").val(node.text);
-							$("#categoryId").val(node.id);
-							$("#addCategoryTree").hide();
-						}
-						
-					}
-				});
-
-			}, "json");
-}
-initTree();
-
+	$(".nav-link").click(function(){
+		//$(this).attr('data-toggle')
+		var recUrl = $(this).attr('data-toggle');
+		console.log("准备进入 "+ recUrl)
+		$("#main").load(recUrl);
+		
+	})	
 </script>
 
 </body></html>
