@@ -59,11 +59,11 @@
 	<dubbo:application name="hg_user-service"  />
 	<!-- 注册中心 采用zookeeper -->
 	<dubbo:registry
-		address="zookeeper://127.0.0.1:2181" /> 
+		address="zookeeper://192.168.2.142:2181" /> 
 	<!-- 直连 -->
 	<!-- <dubbo:registry address="N/A" /> -->
 	<!-- 通讯协议 -->
-	<dubbo:protocol name="dubbo" port="20891" host="127.0.0.1" />
+	<dubbo:protocol name="dubbo" port="20891" host="192.168.2.142" />
 	<!-- 注解扫描配置 指定了扫描的包 -->
 	<dubbo:annotation
 		package="com.qhm.service.impl" />

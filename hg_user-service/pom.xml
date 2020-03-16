@@ -220,7 +220,7 @@
 						<!-- 端口号 -->
 						<port>9092</port>
 						<!-- 项目访问路径 -->
-						<host>localhost</host>
+						<host>192.168.2.142</host>
 					</httpConnector>
 					<contextHandlers>
 						<jettyWebAppContext>
